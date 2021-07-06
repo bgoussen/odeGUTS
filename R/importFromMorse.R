@@ -89,9 +89,9 @@ predict_Nsurv_check.survFitPredict_Nsurv <- function(object, ...){
     dplyr::select(Nsurv, time, Nsurv_q50_valid, Nsurv_q50_check, replicate) %>%
     dplyr::group_by(replicate) %>%
     dplyr::arrange(replicate,time) %>%
-    dplyr::summarise(SPPE = (last(Nsurv) - last(Nsurv_q50_valid)) / first(Nsurv) * 100 )
-  # summarise(sppe_check = (last(Nsurv) - last(Nsurv_q50_check)) / first(Nsurv) * 100,
-  #           sppe_valid = (last(Nsurv) - last(Nsurv_q50_valid)) / first(Nsurv) * 100 )
+    dplyr::summarise(SPPE = (dplyr::last(Nsurv) - dplyr::last(Nsurv_q50_valid)) / dplyr::first(Nsurv) * 100 )
+  # summarise(sppe_check = (dplyr::last(Nsurv) - dplyr::last(Nsurv_q50_check)) / dplyr::first(Nsurv) * 100,
+  #           sppe_valid = (dplyr::last(Nsurv) - dplyr::last(Nsurv_q50_valid)) / dplyr::first(Nsurv) * 100 )
 
 
   return( list(Percent_PPC = as.data.frame(df_ppc),
@@ -687,7 +687,7 @@ predict_Nsurv_ode.survFit <- function(object,
       dplyr::group_by(replicate) %>%
       dplyr::arrange(replicate, time) %>%
       dplyr::mutate(Nprec = ifelse(time == min(time), Nsurv, lag(Nsurv)),
-             iter = row_number(),
+             iter = dplyr::row_number(),
              iter_prec = ifelse(time == min(time), iter, lag(iter))) %>%
       dplyr::ungroup()
 
