@@ -21,4 +21,10 @@ URL: https://github.com/bgoussen/odeGUTS
 BugReports: https://github.com/bgoussen/odeGUTS/issues
 Imports: 
     deSolve,
-    magrittr
+    magrittr,
+    stats,
+    dplyr,
+    zoo
+NeedsCompilation: yes
+Suggests: 
+    morse
