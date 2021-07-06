@@ -653,7 +653,7 @@ predict_Nsurv_ode.survFit <- function(object,
   # dtheo <- do.call("rbind", lapply(dtheo, t))
 
   # Computing Nsurv
-  df_mcmc <- as_tibble(do.call("rbind", x$mcmc))
+  df_mcmc <- dplyr::as_tibble(do.call("rbind", x$mcmc))
   NsurvPred_valid <- dplyr::select(df_mcmc, contains("Nsurv_sim"))
   NsurvPred_check <- dplyr::select(df_mcmc, contains("Nsurv_ppc"))
 
@@ -677,7 +677,7 @@ predict_Nsurv_ode.survFit <- function(object,
   } else{
     # --------------------
 
-    df_psurv <- as_tibble(df_theo) %>%
+    df_psurv <- dplyr::as_tibble(df_theo) %>%
       dplyr::select(-conc) %>%
       dplyr::mutate(time = df$time,
              replicate = df$replicate)
@@ -749,7 +749,7 @@ predict_Nsurv_ode.survFit <- function(object,
 
   if(spaghetti == TRUE){
     random_column <- sample(1:ncol(NsurvPred_valid), size = round(10/100 * ncol(NsurvPred_valid)))
-    df_spaghetti <- as_tibble(NsurvPred_valid[, random_column]) %>%
+    df_spaghetti <- dplyr::as_tibble(NsurvPred_valid[, random_column]) %>%
       mutate(time = data_predict$time,
              conc = data_predict$conc,
              replicate = data_predict$replicate,
@@ -788,7 +788,7 @@ predict_interpolate <- function(x, extend_time = 100){
     dplyr::summarise(min_time = min(time, na.rm = TRUE),
                      max_time = max(time, na.rm = TRUE)) %>%
     dplyr::group_by(replicate) %>%
-    dplyr::do(tibble(replicate = .$replicate, time = seq(.$min_time, .$max_time, length = extend_time)))
+    dplyr::do(dplyr::tibble(replicate = .$replicate, time = seq(.$min_time, .$max_time, length = extend_time)))
 
   x_interpolate <- dplyr::full_join(df_MinMax, x,
                                     by = c("replicate", "time")) %>%
