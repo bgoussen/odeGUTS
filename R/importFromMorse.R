@@ -654,8 +654,8 @@ predict_Nsurv_ode.survFit <- function(object,
 
   # Computing Nsurv
   df_mcmc <- dplyr::as_tibble(do.call("rbind", x$mcmc))
-  NsurvPred_valid <- dplyr::select(df_mcmc, contains("Nsurv_sim"))
-  NsurvPred_check <- dplyr::select(df_mcmc, contains("Nsurv_ppc"))
+  NsurvPred_valid <- dplyr::select(df_mcmc, dplyr::contains("Nsurv_sim"))
+  NsurvPred_check <- dplyr::select(df_mcmc, dplyr::contains("Nsurv_ppc"))
 
   if(is.null(data_predict) &
      # The following condition are always true for survFit done after morse v3.2.0 !
@@ -750,7 +750,7 @@ predict_Nsurv_ode.survFit <- function(object,
   if(spaghetti == TRUE){
     random_column <- sample(1:ncol(NsurvPred_valid), size = round(10/100 * ncol(NsurvPred_valid)))
     df_spaghetti <- dplyr::as_tibble(NsurvPred_valid[, random_column]) %>%
-      mutate(time = data_predict$time,
+      dplyr::mutate(time = data_predict$time,
              conc = data_predict$conc,
              replicate = data_predict$replicate,
              Nsurv = data_predict$Nsurv)

@@ -11,5 +11,6 @@
 # roxygen namespace tags. Modify with care!
 ## usethis namespace: start
 #' @useDynLib odeGUTS, .registration = TRUE
+#' @importFrom stats lag quantile rbinom
 ## usethis namespace: end
 NULL

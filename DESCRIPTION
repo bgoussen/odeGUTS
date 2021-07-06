@@ -1,5 +1,5 @@
 Package: odeGUTS
-Title: Solve ode for GUTS-RED-SD and GUTS-RED-IT using C
+Title: Solve ODE for GUTS-RED-SD and GUTS-RED-IT using C
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Benoit",
@@ -7,11 +7,11 @@ Authors@R:
            role = c("aut", "cre"),
            email = "benoit.goussen@ibacon.com",
            comment = c(ORCID = "0000-0001-7204-7981"))
-Description: This package is based on functions from the "morse" package v3.3.1. 
-          It allows performing forwards prediction for the General Unified 
+Description: Allows performing forwards prediction for the General Unified 
           Threshold model of Survival using compiled ode code. This package 
           was created to avoid dependency with the "morse" package that requires 
-          the installation of JAGS.
+          the installation of JAGS. This package is based on functions from 
+          the "morse" package v3.3.1. 
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
