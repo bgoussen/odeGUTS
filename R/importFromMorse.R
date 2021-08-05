@@ -516,8 +516,8 @@ predict_Nsurv_ode.survFit <- function(object,
                                       data_predict = NULL,
                                       spaghetti = FALSE,
                                       mcmc_size = 1000,
-                                      hb_value = TRUE,
-                                      hb_valueFORCED = NA,
+                                      hb_value = FALSE,
+                                      hb_valueFORCED = 0,
                                       extend_time = 100,
                                       interpolate_length = NULL,
                                       interpolate_method = "linear",
@@ -653,7 +653,7 @@ predict_Nsurv_ode.survFit <- function(object,
   # dtheo <- do.call("rbind", lapply(dtheo, t))
 
   # Computing Nsurv
-  df_mcmc <- dplyr::as_tibble(do.call("rbind", x$mcmc))
+  df_mcmc <- tidyr::as_tibble(do.call("rbind", x$mcmc))
   NsurvPred_valid <- dplyr::select(df_mcmc, dplyr::contains("Nsurv_sim"))
   NsurvPred_check <- dplyr::select(df_mcmc, dplyr::contains("Nsurv_ppc"))
 
@@ -677,7 +677,7 @@ predict_Nsurv_ode.survFit <- function(object,
   } else{
     # --------------------
 
-    df_psurv <- dplyr::as_tibble(df_theo) %>%
+    df_psurv <- tidyr::as_tibble(df_theo) %>%
       dplyr::select(-conc) %>%
       dplyr::mutate(time = df$time,
              replicate = df$replicate)
@@ -686,9 +686,9 @@ predict_Nsurv_ode.survFit <- function(object,
       dplyr::filter(!is.na(Nsurv)) %>%
       dplyr::group_by(replicate) %>%
       dplyr::arrange(replicate, time) %>%
-      dplyr::mutate(Nprec = ifelse(time == min(time), Nsurv, lag(Nsurv)),
+      dplyr::mutate(Nprec = ifelse(time == min(time), Nsurv, dplyr::lag(Nsurv)),
              iter = dplyr::row_number(),
-             iter_prec = ifelse(time == min(time), iter, lag(iter))) %>%
+             iter_prec = ifelse(time == min(time), iter, dplyr::lag(iter))) %>%
       dplyr::ungroup()
 
     mat_psurv <- df_filter %>%
@@ -749,7 +749,7 @@ predict_Nsurv_ode.survFit <- function(object,
 
   if(spaghetti == TRUE){
     random_column <- sample(1:ncol(NsurvPred_valid), size = round(10/100 * ncol(NsurvPred_valid)))
-    df_spaghetti <- dplyr::as_tibble(NsurvPred_valid[, random_column]) %>%
+    df_spaghetti <- tidyr::as_tibble(NsurvPred_valid[, random_column]) %>%
       dplyr::mutate(time = data_predict$time,
              conc = data_predict$conc,
              replicate = data_predict$replicate,
