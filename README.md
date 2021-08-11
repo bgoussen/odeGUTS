@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/bgoussen/odeGUTS/workflows/R-CMD-check/badge.svg)](https://github.com/bgoussen/odeGUTS/actions)
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 The goal of odeGUTS is to offer ode solver for the GUTS-RED-SD and
@@ -29,12 +29,21 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("bgoussen/odeGUTS")
 ```
 
-<!-- ## Example -->
-<!-- This is a basic example which shows you how to solve a common problem: -->
-<!-- ```{r example} -->
-<!-- library(odeGUTS) -->
-<!-- ## basic example code -->
-<!-- ``` -->
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library(odeGUTS)
+dataPredict <- data.frame(time = c(1:5, 1:10, 1:15), 
+                          conc = c(rep(5, 5), 
+                                  c(rep(0, 3), rep(12, 4), rep(0, 3)), 
+                                  rep(15, 15)),  
+                          replicate = c(rep("rep1", 5), rep("rep2", 10), rep("rep3", 15))) # Prepare data for forwards prediction
+data(fit_odeGUTS)
+out <- predict(fit_odeGUTS, dataPredict)
+```
+
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
 <!-- ```{r cars} -->
 <!-- summary(cars) -->
