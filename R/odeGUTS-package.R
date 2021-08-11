@@ -14,3 +14,16 @@
 #' @importFrom stats lag quantile rbinom
 ## usethis namespace: end
 NULL
+
+#' Model calibration results for a GUTS-SD theoretical species exposed to a compound.
+#'
+#' @name fit_odeGUTS
+#' @docType data
+#' @usage data(fit_odeGUTS)
+#' @format A list of class \code{survFit} constructed
+#' \describe{
+#' \item{\code{mcmc}}{A list of mcmc chain results}
+#' \item{\code{model_type}}{A character string containing the type of GUTS model used (here 'SD').}
+#' }
+#' @keywords dataset
+NULL

@@ -41,7 +41,7 @@ dataPredict <- data.frame(time = c(1:5, 1:10, 1:15),
                                   rep(15, 15)),  
                           replicate = c(rep("rep1", 5), rep("rep2", 10), rep("rep3", 15))) # Prepare data for forwards prediction
 data(fit_odeGUTS)
-out <- predict(fit_odeGUTS, dataPredict)
+out <- predict_ode(fit_odeGUTS, dataPredict)
 ```
 
 <!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
