@@ -7,7 +7,7 @@ This is a resubmission. In this version I have:
 
 * Added the missing value fields in the corresponding .Rd files
 
-* Rewritten and unwrapp the examples when possible.
+* Rewritten and unwrap the examples when possible.
 
 
 ## Test environments
