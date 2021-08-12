@@ -4,7 +4,7 @@
 \name{odeGUTS-package}
 \alias{odeGUTS}
 \alias{odeGUTS-package}
-\title{odeGUTS: Solve ODE for GUTS-RED-SD and GUTS-RED-IT using compiled code}
+\title{odeGUTS: Solve ODE for GUTS-RED-SD and GUTS-RED-IT Using Compiled Code}
 \description{
 Allows performing forwards prediction for the General Unified 
           Threshold model of Survival using compiled ode code. This package 
@@ -13,7 +13,7 @@ Allows performing forwards prediction for the General Unified
           the 'morse' package v3.3.1: Virgile Baudrot, Sandrine Charles, 
           Marie Laure Delignette-Muller, Wandrille Duchemin, Benoit Goussen, 
           Nils Kehrein, Guillaume Kon-Kam-King, Christelle Lopes, Philippe Ruiz, 
-          Alexander Singer and Philippe Veber (2021)<https://CRAN.R-project.org/package=morse>
+          Alexander Singer and Philippe Veber (2021) <https://CRAN.R-project.org/package=morse>.
 }
 \references{
 Virgile Baudrot, Sandrine Charles, Marie Laure Delignette-Muller, Wandrille
