@@ -119,6 +119,7 @@ predict_Nsurv_check.survFitPredict_Nsurv <- function(object, ...){
 #' object when computing issues happen. \code{predict_ode} uses the \code{deSolve}
 #' library to improve robustness. However, time to compute may be longer.
 #'
+#' @rdname predict
 #'
 #' @param object an object used to select a method \code{ppc}
 #' @param \dots Further arguments to be passed to generic methods
@@ -132,6 +133,8 @@ predict_ode <- function(object, ...){
 #' Function from the \code{morse v 3.3.1} package.
 #' This is the generic \code{predict} S3 method for the \code{survFit} class.
 #' It provides predicted survival rate for "SD" or "IT" models under constant or time-variable exposure.
+#'
+#' @rdname predict
 #'
 #' @param object An object of class \code{survFit}.
 #' @param data_predict A dataframe with three columns \code{time}, \code{conc} and \code{replicate}
@@ -150,28 +153,23 @@ predict_ode <- function(object, ...){
 #' @param  hb_valueFORCED If \code{hb_value} is \code{FALSE}, it fix \code{hb}.
 #' @param \dots Further arguments to be passed to generic methods
 #'
+#' @return The function returns an object of class \code{survFitPredict} or
+#' \code{survFitPredict_Nsurv} with two items:
+#' \item{df_quantile}{Predicted quantiles (q50, qinf95, and qsup95)}
+#' \item{df_spaghetti}{Predicted survival curve (if spaghetti = \code{TRUE})}
+#'
 #' @examples
-#' \dontrun{
-#' library("morse")
-#' # (1) Load the survival data
-#' data("propiconazole_pulse_exposure")
+#' library("odeGUTS")
+#' data(fit_odeGUTS)
 #'
-#' # (2) Create an object of class "survData"
-#' dataset <- survData(propiconazole_pulse_exposure)
-#'
-#' # (3) Run the survFit function
-#' out <- survFit(dataset , model_type = "SD")
-#'
-#' # (4) Create a new data table for prediction
 #' data_4prediction <- data.frame(time = 1:10,
 #'                                conc = c(0,5,30,30,0,0,5,30,15,0),
 #'                                replicate= rep("predict", 10))
 #'
-#' # (5) Predict on a new data set
-#' predict_out <- predict_ode(object = out, data_predict = data_4prediction,
-#'                            mcmc_size = 1000, spaghetti = TRUE)
+#' predict_out <- predict_ode(object = fit_odeGUTS, data_predict = data_4prediction,
+#'                            mcmc_size = 200, spaghetti = FALSE)
 #'
-#' }
+#'
 #'
 #' @import deSolve
 #' @importFrom stats approxfun
@@ -508,6 +506,7 @@ predict_Nsurv_ode <- function(object,
   UseMethod("predict_Nsurv_ode")
 }
 
+#' @rdname predict
 #' @import deSolve
 #' @importFrom stats approxfun
 #'

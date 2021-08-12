@@ -47,5 +47,5 @@ Provide various criteria for assessment of the model performance:
 (i) percentage of observation within the 95\\% credible
 interval of the Posterior Prediction Check (PPC), the Normalised Root Mean
 Square Error (NRMSE) and the Survival Probability Prediction Error (SPPE) as
-reccommended by the recent Scientific Opinion from EFSA (2018).
+recommended by the recent Scientific Opinion from EFSA (2018).
 }

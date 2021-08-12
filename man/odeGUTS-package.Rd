@@ -4,13 +4,16 @@
 \name{odeGUTS-package}
 \alias{odeGUTS}
 \alias{odeGUTS-package}
-\title{odeGUTS: Solve ODE for GUTS-RED-SD and GUTS-RED-IT using C}
+\title{odeGUTS: Solve ODE for GUTS-RED-SD and GUTS-RED-IT using compiled code}
 \description{
 Allows performing forwards prediction for the General Unified 
           Threshold model of Survival using compiled ode code. This package 
-          was created to avoid dependency with the "morse" package that requires 
-          the installation of JAGS. This package is based on functions from 
-          the "morse" package v3.3.1.
+          was created to avoid dependency with the 'morse' package that requires 
+          the installation of 'JAGS'. This package is based on functions from 
+          the 'morse' package v3.3.1: Virgile Baudrot, Sandrine Charles, 
+          Marie Laure Delignette-Muller, Wandrille Duchemin, Benoit Goussen, 
+          Nils Kehrein, Guillaume Kon-Kam-King, Christelle Lopes, Philippe Ruiz, 
+          Alexander Singer and Philippe Veber (2021)<https://CRAN.R-project.org/package=morse>
 }
 \references{
 Virgile Baudrot, Sandrine Charles, Marie Laure Delignette-Muller, Wandrille
