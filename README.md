@@ -8,6 +8,8 @@
 [![R-CMD-check](https://github.com/bgoussen/odeGUTS/workflows/R-CMD-check/badge.svg)](https://github.com/bgoussen/odeGUTS/actions)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/odeGUTS)](https://CRAN.R-project.org/package=odeGUTS)
 <!-- badges: end -->
 
 The goal of odeGUTS is to offer ode solver for the GUTS-RED-SD and
