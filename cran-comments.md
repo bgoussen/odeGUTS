@@ -1,15 +1,3 @@
-## Resubmission
-This is a resubmission. In this version I have:
-
-* Identified the reference in the DESCRIPTION files as indicated (authors (year) <https:...>)
-
-* Written package and software names in the DESCRIPTION file in single quotes
-
-* Added the missing value fields in the corresponding .Rd files
-
-* Rewritten and unwrap the examples when possible.
-
-
 ## Test environments
 * windows Server 2019 10.0.17763 (on github-actions), R 4.1.0
 * macOS X 10.15.7 (on github-actions), R 4.1.0
@@ -18,9 +6,7 @@ This is a resubmission. In this version I have:
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+0 errors | 0 warnings | 0 note
 
 ## Downstream dependencies
 There are no downstream dependencies
