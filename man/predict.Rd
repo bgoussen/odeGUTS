@@ -14,10 +14,10 @@ predict_ode(object, ...)
   data_predict = NULL,
   spaghetti = FALSE,
   mcmc_size = 1000,
-  hb_value = TRUE,
+  hb_value = FALSE,
   interpolate_length = 100,
   interpolate_method = "linear",
-  hb_valueFORCED = NA,
+  hb_valueFORCED = 0,
   ...
 )
 
@@ -64,14 +64,14 @@ the computation. \code{mcmc_size} is the number of selected iterations for one c
 is 1000. If all MCMC is wanted, set argument to \code{NULL}.}
 
 \item{hb_value}{If \code{TRUE}, the background mortality \code{hb} is taken into account from the posterior.
-If \code{FALSE}, parameter \code{hb} is set to 0. The default is \code{TRUE}.}
+If \code{FALSE}, parameter \code{hb} is set to 0. The default is \code{FALSE}.}
 
 \item{interpolate_length}{Length of the time sequence for which output is wanted.}
 
 \item{interpolate_method}{The interpolation method for concentration. See package \code{deSolve} for details.
 Default is \code{linear}.}
 
-\item{hb_valueFORCED}{If \code{hb_value} is \code{FALSE}, it fix \code{hb}.}
+\item{hb_valueFORCED}{If \code{hb_value} is \code{FALSE}, it fix \code{hb}. Default is \code{0}}
 
 \item{extend_time}{Length of time points interpolated with variable exposure profiles.}
 }

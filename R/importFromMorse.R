@@ -146,11 +146,11 @@ predict_ode <- function(object, ...){
 #'  the computation. \code{mcmc_size} is the number of selected iterations for one chain. Default
 #'  is 1000. If all MCMC is wanted, set argument to \code{NULL}.
 #' @param hb_value If \code{TRUE}, the background mortality \code{hb} is taken into account from the posterior.
-#' If \code{FALSE}, parameter \code{hb} is set to a fixed value. The default is \code{TRUE}.
+#' If \code{FALSE}, parameter \code{hb} is set to a fixed value. The default is \code{FALSE}.
 #' @param interpolate_length Length of the time sequence for which output is wanted.
 #' @param interpolate_method The interpolation method for concentration. See package \code{deSolve} for details.
 #' Default is \code{linear}.
-#' @param  hb_valueFORCED If \code{hb_value} is \code{FALSE}, it fix \code{hb}.
+#' @param  hb_valueFORCED If \code{hb_value} is \code{FALSE}, it fix \code{hb}. Default is \code{0}.
 #' @param \dots Further arguments to be passed to generic methods
 #'
 #' @return The function returns an object of class \code{survFitPredict} or
@@ -179,10 +179,10 @@ predict_ode.survFit <- function(object,
                                 data_predict = NULL,
                                 spaghetti = FALSE,
                                 mcmc_size = 1000,
-                                hb_value = TRUE,
+                                hb_value = FALSE,
                                 interpolate_length = 100,
                                 interpolate_method = "linear",
-                                hb_valueFORCED = NA,
+                                hb_valueFORCED = 0,
                                 ...) {
   x <- object # Renaming to satisfy CRAN checks on S3 methods
   # arguments should be named the same when declaring a
@@ -484,8 +484,8 @@ SurvIT_ode <- function(Cw, time, replicate, kd, hb, alpha, beta, mcmc_size = NUL
 #'  the computation. \code{mcmc_size} is the number of selected iterations for one chain. Default
 #'  is 1000. If all MCMC is wanted, set argument to \code{NULL}.
 #' @param hb_value If \code{TRUE}, the background mortality \code{hb} is taken into account from the posterior.
-#' If \code{FALSE}, parameter \code{hb} is set to 0. The default is \code{TRUE}.
-#' @param  hb_valueFORCED If \code{hb_value} is \code{FALSE}, it fix \code{hb}.
+#' If \code{FALSE}, parameter \code{hb} is set to 0. The default is \code{FALSE}.
+#' @param  hb_valueFORCED If \code{hb_value} is \code{FALSE}, it fix \code{hb}. Default is \code{0}
 #' @param extend_time Length of time points interpolated with variable exposure profiles.
 #' @param interpolate_length Length of the time sequence for which output is wanted.
 #' @param interpolate_method The interpolation method for concentration. See package \code{deSolve} for details.
