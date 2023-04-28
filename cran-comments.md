@@ -1,12 +1,18 @@
 ## Test environments
-* windows Server 2019 10.0.17763 (on github-actions), R 4.1.0
-* macOS X 10.15.7 (on github-actions), R 4.1.0
-* ubuntu 20.04 (release) (on github-actions), R 4.1.0
-* ubuntu 20.04 (devel) (on github-actions), R unstable 2021-08-09 r80724
+* devtools::check(remote = TRUE, manual = TRUE)
+* devtools::check_win_devel()
+* rhub::check_for_cran()
+* rhub::check(platform = 'ubuntu-rchk')
+* rhub::check_with_sanitizers()
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note
 
-## Downstream dependencies
-There are no downstream dependencies
+## revdepcheck results
+
+We checked 1 reverse dependencies (0 from CRAN + 1 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
+
