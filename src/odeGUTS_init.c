@@ -2,8 +2,8 @@
 #include <R_ext/Rdynload.h>
 
 /* .C calls */
-extern void gutsredit_free();
-extern void gutsredsd_free();
+extern void gutsredit_free(void);
+extern void gutsredsd_free(void);
 
 extern void gutsredsd_init(void (* odeparms)(int *, double *));
 extern void gutsredsd_forc(void (* odeforcs)(int *, double *));
