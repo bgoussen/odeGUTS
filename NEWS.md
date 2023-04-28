@@ -1,3 +1,6 @@
+# odeGUTS 1.0.2
+* Patch deprecated C functions
+
 # odeGUTS 1.0.1
 * Change the default parameter values for hb_value (from TRUE to FALSE) and for
 hb_valueFORCED (from NA to 0). This ensure that by default hb_values from the calibration
