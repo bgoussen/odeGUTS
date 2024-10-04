@@ -76,7 +76,7 @@ void gutsredit_forc(void (* odeforcs)(int *, double *))
 /**
  * ODEs of the GUTS-RED-IT model
  */
-void gutsredit_func(int *neq, double *t, double *y, double *ydot, double *yout, int*ip)
+void gutsredit_func(int *neq, double *t, double *y, double *ydot, double *yout, int *ip)
 {
   for(int i=0; i<MCMC; i++) {
     // dDw/dt
