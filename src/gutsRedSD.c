@@ -1,5 +1,6 @@
 #include <R.h>
 #include <Rinternals.h>
+#include <stdlib.h>
 #include <math.h>
 
 // Function from the morse v 3.3.1 package.
@@ -41,11 +42,11 @@ void gutsredsd_init(void (* odeparms)(int *, double *))
   MCMC = (int)REAL(fun())[0];
   // allocate memory
   int N = MCMC*4+1;
-  double *arr = (double*)Calloc(N, double);
-  kd = (double*)Calloc(MCMC, double);
-  hb = (double*)Calloc(MCMC, double);
-  z = (double*)Calloc(MCMC, double);
-  kk = (double*)Calloc(MCMC, double);
+  double *arr = (double*)calloc(N, sizeof(double));
+  kd = (double*)calloc(MCMC, sizeof(double));
+  hb = (double*)calloc(MCMC, sizeof(double));
+  z = (double*)calloc(MCMC, sizeof(double));
+  kk = (double*)calloc(MCMC, sizeof(double));
   // import parameters
   odeparms(&N, arr);
   // by copying the array we avoid index magic later on
@@ -55,7 +56,7 @@ void gutsredsd_init(void (* odeparms)(int *, double *))
     z[i] = arr[MCMC*2+i+1];
     kk[i] = arr[MCMC*3+i+1];
   }
-  Free(arr);
+  free(arr);
 }
 
 /**
@@ -63,10 +64,10 @@ void gutsredsd_init(void (* odeparms)(int *, double *))
  */
 void gutsredsd_free(void)
 {
-  Free(kd);
-  Free(hb);
-  Free(z);
-  Free(kk);
+  free(kd);
+  free(hb);
+  free(z);
+  free(kk);
 }
 
 

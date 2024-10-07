@@ -1,5 +1,6 @@
 #include <R.h>
 #include <Rinternals.h>
+#include <stdlib.h>
 #include <math.h>
 
 // Function from the morse v 3.3.1 package.
@@ -39,9 +40,9 @@ void gutsredit_init(void (* odeparms)(int *, double *))
   MCMC = (int)REAL(fun())[0];
   // allocate memory
   int N = MCMC*2+1;
-  double *arr = (double*)Calloc(N, double);
-  kd = (double*)Calloc(MCMC, double);
-  hb = (double*)Calloc(MCMC, double);
+  double *arr = (double*)calloc(N, sizeof(double));
+  kd = (double*)calloc(MCMC, sizeof(double));
+  hb = (double*)calloc(MCMC, sizeof(double));
   // import parameters
   odeparms(&N, arr);
   // by copying the array we avoid index magic later on
@@ -49,7 +50,7 @@ void gutsredit_init(void (* odeparms)(int *, double *))
     kd[i] = arr[i+1];
     hb[i] = arr[MCMC+i+1];
   }
-  Free(arr);
+  free(arr);
 }
 
 /**
@@ -57,8 +58,8 @@ void gutsredit_init(void (* odeparms)(int *, double *))
  */
 void gutsredit_free(void)
 {
-  Free(kd);
-  Free(hb);
+  free(kd);
+  free(hb);
 }
 
 /**
@@ -75,7 +76,7 @@ void gutsredit_forc(void (* odeforcs)(int *, double *))
 /**
  * ODEs of the GUTS-RED-IT model
  */
-void gutsredit_func(int *neq, double *t, double *y, double *ydot, double *yout, int*ip)
+void gutsredit_func(int *neq, double *t, double *y, double *ydot, double *yout, int *ip)
 {
   for(int i=0; i<MCMC; i++) {
     // dDw/dt
