@@ -1,9 +1,9 @@
 ## Test environments
-* devtools::check(remote = TRUE, manual = TRUE)
-* devtools::check_win_devel()
-* rhub::check_for_cran()
-* rhub::check(platform = 'ubuntu-rchk')
-* rhub::check_with_sanitizers()
+* R-CMD-check / macos-latest (release)
+* R-CMD-check / ubuntu-latest (devel)
+* R-CMD-check / ubuntu-latest (oldrel-1)
+* R-CMD-check / ubuntu-latest (release)
+* R-CMD-check / windows-latest (release)
 
 ## R CMD check results
 
