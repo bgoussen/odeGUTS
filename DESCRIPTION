@@ -1,6 +1,6 @@
 Package: odeGUTS
 Title: Solve ODE for GUTS-RED-SD and GUTS-RED-IT Using Compiled Code
-Version: 1.1.0
+Version: 1.1.0.9000
 Authors@R: 
     c(
     person(given = "Benoit",
